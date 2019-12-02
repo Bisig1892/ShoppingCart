@@ -12,15 +12,24 @@ function initBuyButtons() {
     }
 }
 function buyProduct() {
+    var prod = getProduct();
+    saveProductToCart(prod);
+}
+/**
+ * Get Product object currently selected by user
+ */
+function getProduct() {
     var currBuyBtn = this;
     var currProdDiv = currBuyBtn.parentElement;
     var prod = new Product();
     prod.title = currProdDiv.querySelector('div.title').innerHTML;
-    // console.log(currProdDiv.querySelector("div.title"));
     var price = currProdDiv.querySelector('div.price').innerHTML;
     price = price.replace('$', '');
     prod.price = parseFloat(price);
     prod.description = currProdDiv.querySelector('div.description').innerHTML;
+    return prod;
+}
+function saveProductToCart(p) {
 }
 var Product = /** @class */ (function () {
     function Product() {
