@@ -14,5 +14,13 @@ function initBuyButtons() {
 }
 
 function buyProduct() {
-    alert('You clicked Buy');
+    let currBuyBtn = <HTMLElement>this;
+    let currProdDiv = currBuyBtn.parentElement;
+    let prod = new Product();
+    prod.title = currProdDiv.querySelector('div.title').innerHTML;
+    // console.log(currProdDiv.querySelector("div.title"));
+    let price = currProdDiv.querySelector('div.price').innerHTML;
+    price = price.replace('$', '');
+    prod.price = parseFloat(price);
+    prod.description = currProdDiv.querySelector('div.description').innerHTML;
 }
